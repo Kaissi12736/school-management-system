@@ -1,0 +1,8 @@
+
+
+.flasher-container {
+    z-index: 9999 !important; /* تأكد من أن القيمة أعلى من الهيدر */
+    position: fixed;
+    top: 20px; /* تعديل الموضع إذا لزم الأمر */
+    right: 20px;
+}
