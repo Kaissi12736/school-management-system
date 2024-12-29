@@ -17,7 +17,19 @@ return [
     'Edit'=>'تعديل',
     'Delete'=>'حذف',
     'Close' => 'اغلاق',
-
-
+    'save_changes' => 'حفظ التعديلات',
+    'validation_message' => 'يرجى تعبئة جميع الحقول!',
+    'confirm_delete_title' => 'هل أنت متأكد؟',
+    'confirm_delete_text' => 'لن تتمكن من التراجع عن هذا الإجراء!',
+    'confirm_button' => 'نعم، احذف!',
+    'cancel_button' => 'إلغاء',
+    'success_title' => 'تم الحذف!',
+    'success_message' => 'تم حذف العنصر بنجاح.',
+    'confirm_delete_title' => 'هل أنت متأكد؟',
+    'confirm_delete_text' => 'لن تتمكن من التراجع عن هذا الإجراء!',
+    'confirm_button' => 'نعم، احذف!',
+    'cancel_button' => 'إلغاء',
+    'success_title' => 'تم الحذف!',
+    
 
 ];

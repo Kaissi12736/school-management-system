@@ -1,8 +1,53 @@
 
 
-.flasher-container {
-    z-index: 9999 !important; /* تأكد من أن القيمة أعلى من الهيدر */
-    position: fixed;
-    top: 20px; /* تعديل الموضع إذا لزم الأمر */
-    right: 20px;
+
+/* تحسين الأعلام */
+.flag-icon {
+    width: 30px; /* عرض العلم */
+    height: 20px; /* ارتفاع العلم */
+    border-radius: 3px; /* زوايا دائرية صغيرة */
+    margin: 3px auto; /* توسيط العلم */
+    display: block; /* عرض كـ block لتوسيط العنصر */
+}
+
+/* تحسين العناصر داخل القائمة */
+.custom-dropdown-item {
+    padding: 5px; /* حشوة صغيرة */
+    display: flex;
+    justify-content: center; /* توسيط الأعلام داخل العنصر */
+    align-items: center;
+    transition: background-color 0.3s ease; /* تأثير سلس عند التمرير */
+}
+
+
+
+.btn.btn-secondary.dropdown-toggle {
+    position: relative;
+    top: -5px; /* رفع الزر للأعلى */
+}
+
+
+
+.side-menu-bg {
+    font-family: 'Cairo', sans-serif; /* تطبيق خط كايرو */
+    font-weight: 600; /* زيادة سمك الخط */
+    font-size: 14px; /* حجم النص */
+}
+
+
+.side-menu li a {
+    color: #333; /* تغيير لون النص إذا لزم الأمر */
+    text-decoration: none; /* إزالة الخط السفلي من الروابط */
+}
+
+/* لتوسيع نافذة SweetAlert2 */
+.custom-swal-popup {
+    width: 700px !important; /* عرض النافذة */
+    max-width: 90%; /* التأكد من أن العرض لا يتجاوز الشاشة */
+}
+
+/* لجعل HTML الداخلي أعرض */
+.custom-html-container {
+    text-align: left; /* التأكد من أن النصوص تبقى لليسار */
+    font-size: 1rem; /* ضبط حجم النص */
 }

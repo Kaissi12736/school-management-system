@@ -10,15 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     
 
-    
+ 
 
 </head>
 
 <body>
+
 
     <div class="wrapper">
 
@@ -27,7 +28,7 @@
 
         <div id="pre-loader">
             <img src="{{ asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
-           </div>
+        </div>
 
         <!--=================================
  preloader -->
@@ -52,7 +53,7 @@
  footer -->
 
             @include('layouts.footer')
-            
+
         </div><!-- main content wrapper end-->
     </div>
     </div>
@@ -61,13 +62,10 @@
     <!--=================================
  footer -->
 
+
     @include('layouts.footer-scripts')
 
-
- 
 
 </body>
 
 </html>
-
-

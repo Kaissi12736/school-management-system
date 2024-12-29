@@ -56,7 +56,7 @@ class GradeController extends Controller
       $Grade->save();
       
       
-      emotify('success', 'You are awesome, your data was successfully created');
+      // emotify('success', trans('messages.success'));
       return redirect()->route('Grades.index');
   }
 
@@ -94,9 +94,24 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(StoreGrades $request)
   {
-    
+
+    try {
+ 
+        $validated = $request->validated();
+        $Grades = Grade::findOrFail($request->id);
+        $Grades->update([
+          $Grades->Name = ['ar' => $request->Name, 'en' => $request->Name_en],
+          $Grades->Notes = $request->Notes,
+        ]);
+        // emotify('success', trans('messages.Update'));
+        return redirect()->route('Grades.index');
+    }
+    catch
+    (\Exception $e) {
+        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
   }
 
   /**
@@ -105,11 +120,23 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request $request)
   {
-    
+    try {
+      // حذف العنصر
+      $grade = Grade::findOrFail($request->id)->delete();
+
+      // إرسال رسالة النجاح إلى الجلسة
+      session()->flash('delete_grade', 'تم حذف الصف بنجاح!');
+
+      // إعادة التوجيه
+      return redirect()->route('Grades.index');
+  } catch (\Exception $e) {
+      // في حالة حدوث خطأ
+      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
   }
-  
+
+
+  }
 }
 
-?>

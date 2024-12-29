@@ -1,14 +1,42 @@
-
 <?php
 
 return [
 
-    'Dashboard'=>'لوحة التحكم',
+    'Dashboard'=>'الرئيسية',
     'Dashboard_page'=>'لوحة التحكم',
+    'Main_title'=>'برنامج لادارة المدارس',
+    'Programname' => 'برنامج لادارة المدارس',
     'change_language'=>'تغير اللغة',
     'Grades'=>'المراحل الدراسية',
     'Grades_list'=>'قائمة المراحل الدراسية',
-
-
-
+    'classes'=>'الفصول',
+    'sections'=>'الاقسام',
+    'students'=>'الطلاب',
+    'Teachers'=>'المعلمين',
+    'Parents'=>'اولياء الامور',
+    'Accounts'=>'الحسابات',
+    'Attendance'=>'الحضور والغياب',
+    'Exams'=>'الامتحانات',
+    'library'=>'المكتبة',
+    'Onlineclasses'=>'حصص اونلاين',
+    'Settings'=>'الاعدادات',
+    'Users'=>'المستخدمين',
+    'Copyright' => 'جميع الحقوق محفوظة ',
+    'Name_Programer' => 'سمير جمال مورا سوفت',
+  'edit_Grade'=> 'تعديل مرحلة',
+  'stage_name_ar'=> 'اسم المرحلة بالعربية',
+    'stage_name_en'=> 'اسم المرحلة بالانجليزية',
+    'Notes'=> 'ملاحظات',
+    'save_changes' => 'حفظ التعديلات',
+    'cancel_button' => 'الغاء',
+    'validation_message' => 'يرجى تعبئة جميع الحقول!',
+    'confirm_button' => 'نعم, احذفها!',
+    'confirm_delete_title' => 'هل انت متأكد؟',
+    'confirm_delete_text' => 'لن تتمكن من استعادة هذا!',
+    'add_Grade' => 'إضافة مرحلة دراسية',
+    'stage_name_ar' => 'اسم المرحلة بالعربية',
+    'stage_name_en' => 'اسم المرحلة بالإنجليزية',
+    'Notes' => 'الملاحظات',
+    'save_changes' => 'حفظ التغييرات',
+    'validation_message' => 'يجب ملء جميع الحقول!'
 ];

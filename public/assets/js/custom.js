@@ -58,6 +58,15 @@ var $window = $(window),
     $pieChart = $('.round-chart'),
     $counter = $('.counter'),
     $datetp = $('.datetimepicker');
+
+
+
+
+
+
+
+
+
     //Check if function exists
     $.fn.exists = function () {
         return this.length > 0;
@@ -887,6 +896,40 @@ var _arr  = {};
       callback();
     }
   };
+
+    function confirmation(event, gradeId) {
+        event.preventDefault(); // منع الإرسال الفوري للنموذج
+        Swal.fire({
+            title: "{{ __('Grades_trans.confirm_delete_title') }}",
+            text: "{{ __('Grades_trans.confirm_delete_text') }}", // ترجمة النص التوضيحي
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "{{ __('Grades_trans.confirm_button') }}", // ترجمة نص زر التأكيد
+        cancelButtonText: "{{ __('Grades_trans.cancel_button') }}", // ترجمة نص زر الإلغاء
+    }).then((result) => {
+            if (result.isConfirmed) {
+                // إرسال النموذج إذا تم تأكيد الحذف
+                document.getElementById(`formExlu${gradeId}`).submit();
+                Swal.fire({
+        title: "تم الحذف!",
+        text: "تم حذف العنصر بنجاح.",
+        icon: "success",
+        timer: 10000, // المدة الزمنية قبل الإغلاق (4000 مللي ثانية = 4 ثوانٍ)
+        timerProgressBar: false, // إظهار شريط تقدم
+        showConfirmButton: false, // عدم عرض زر التأكيد
+        willClose: () => {
+            // هذا الخيار يتم تنفيذه عند إغلاق النافذة
+            console.log('تم إغلاق نافذة النجاح');
+        }
+    });
+            }
+        });
+    }
+
+
+ 
 
 /****************************************************
      POTENZA Window load and functions
