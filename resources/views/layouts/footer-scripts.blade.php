@@ -3,6 +3,8 @@
 
 <!-- plugins-jquery -->
 <script src="{{ asset('assets/js/plugins-jquery.js') }}"></script>
+{{-- <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script> --}}
+
 
 <!-- plugin_path -->
 <script type="text/javascript">var plugin_path = '{{ asset('assets/js') }}/';</script>
@@ -10,11 +12,10 @@
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-
 <!-- Bootstrap Select -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+
+<script src="{{ asset('assets/js/notify.min.js') }}"></script>
 
 <!-- تعريف النصوص المترجمة -->
 <script>
@@ -34,6 +35,7 @@
         addGradeTitle: "{{ __('main_trans.add_Grade') }}",
     };
 </script>
+
 
 <!-- ملفك الخاص -->
 <script src="{{ asset('assets/js/grades.js') }}"></script>

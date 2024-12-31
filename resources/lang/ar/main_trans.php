@@ -22,7 +22,7 @@ return [
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'سمير جمال مورا سوفت',
+    'Name_Programer' => ' سوفت',
   'edit_Grade'=> 'تعديل مرحلة',
   'stage_name_ar'=> 'اسم المرحلة بالعربية',
     'stage_name_en'=> 'اسم المرحلة بالانجليزية',
@@ -38,5 +38,8 @@ return [
     'stage_name_en' => 'اسم المرحلة بالإنجليزية',
     'Notes' => 'الملاحظات',
     'save_changes' => 'حفظ التغييرات',
-    'validation_message' => 'يجب ملء جميع الحقول!'
+    'validation_message' => 'يجب ملء جميع الحقول!',
+    'success_title' => ' العملية الحدف',
+    'success_message' => 'تمت عملية الحذف بنجاح',
+    'List_classes' => 'قائمة الصفوف',
 ];

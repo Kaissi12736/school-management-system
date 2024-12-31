@@ -1,16 +1,23 @@
-<?php 
+<?php
 
 
 namespace App\Http\Controllers\Grades;
+
 use App\Models\Grade;
 use Illuminate\Http\Request;
+
+
 use App\Http\Requests\StoreGrades;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Session;
+use Flasher\Prime\FlasherInterface;
 
-class GradeController extends Controller 
+
+
+class GradeController extends Controller
 {
- 
+
 
   /**
    * Display a listing of the resource.
@@ -20,8 +27,7 @@ class GradeController extends Controller
   public function index()
   {
     $Grades = Grade::all();
-    return view('pages.Grades',compact('Grades'));
-    
+    return view('pages.Grades.Grades', compact('Grades'));
   }
 
   /**
@@ -29,10 +35,7 @@ class GradeController extends Controller
    *
    * @return Response
    */
-  public function create()
-  {
-    
-  }
+  public function create() {}
 
   /**
    * Store a newly created resource in storage.
@@ -41,6 +44,22 @@ class GradeController extends Controller
    */
   public function store(StoreGrades $request)
   {
+
+    // تحقق من وجود المرحلة مسبقًا في قاعدة البيانات
+
+    if (Grade::where('Name->ar', $request->Name)
+      ->orWhere('Name->en', $request->Name_en)
+      ->exists()
+    ) {
+
+      flash()
+        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+        ->error(trans('Grades_trans.exists'));
+
+      return redirect()->route('Grades.index');
+    }
+
+
     try {
       $validated = $request->validated();
       $Grade = new Grade();
@@ -54,16 +73,20 @@ class GradeController extends Controller
       $Grade->Name = ['en' => $request->Name_en, 'ar' => $request->Name];
       $Grade->Notes = $request->Notes;
       $Grade->save();
-      
-      
-      // emotify('success', trans('messages.success'));
+      // إشعار النجاح
+      flash()
+        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+        ->success(trans('messages.success'));
+
       return redirect()->route('Grades.index');
-  }
+    } catch (\Exception $e) {
+      // إشعار الخطأ
+      flash()
+        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+        ->error(trans('Grades_trans.add_error') . ': ' . $e->getMessage());
 
-  catch (\Exception $e){
       return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-  }
-
+    }
   }
 
   /**
@@ -72,10 +95,7 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function show($id)
-  {
-    
-  }
+  public function show($id) {}
 
   /**
    * Show the form for editing the specified resource.
@@ -83,10 +103,7 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function edit($id)
-  {
-    
-  }
+  public function edit($id) {}
 
   /**
    * Update the specified resource in storage.
@@ -98,19 +115,21 @@ class GradeController extends Controller
   {
 
     try {
- 
-        $validated = $request->validated();
-        $Grades = Grade::findOrFail($request->id);
-        $Grades->update([
-          $Grades->Name = ['ar' => $request->Name, 'en' => $request->Name_en],
-          $Grades->Notes = $request->Notes,
-        ]);
-        // emotify('success', trans('messages.Update'));
-        return redirect()->route('Grades.index');
-    }
-    catch
-    (\Exception $e) {
-        return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+      $validated = $request->validated();
+      $Grades = Grade::findOrFail($request->id);
+      $Grades->update([
+        $Grades->Name = ['ar' => $request->Name, 'en' => $request->Name_en],
+        $Grades->Notes = $request->Notes,
+      ]);
+      flash()
+        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+
+        ->success(trans('messages.Update'));
+
+      return redirect()->route('Grades.index');
+    } catch (\Exception $e) {
+      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
     }
   }
 
@@ -131,12 +150,9 @@ class GradeController extends Controller
 
       // إعادة التوجيه
       return redirect()->route('Grades.index');
-  } catch (\Exception $e) {
+    } catch (\Exception $e) {
       // في حالة حدوث خطأ
       return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-  }
-
-
+    }
   }
 }
-

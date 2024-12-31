@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Grades\GradeController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
 
+use App\Http\Controllers\Grades\GradeController;
+
+use App\Http\Controllers\Classrooms\ClassroomController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['middleware' => ['guest']], function () {
@@ -22,6 +23,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('Grades', GradeController::class);
+
+Route::resource('Classrooms', ClassroomController::class);
 
 });
 

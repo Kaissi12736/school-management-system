@@ -1,5 +1,29 @@
+/* القواعد المشتركة بين العناصر */
+.fl-flasher,
+.fl-container {
+    top: 80px;
+    color: #000000; /* لون النص */
+    z-index: 9999; /* فوق العناصر الأخرى */
+  
+
+}
+.fl-flasher.fl-success.fl-rtl,
+.fl-flasher.fl-rtl {
+    font-size: 16px; /* حجم النص */
+   
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل */
+     opacity: 0.9; /* درجة الشفافية العامة */
 
 
+    
+}
+.fl-wrapper[data-position$=-right] .fl-container{
+    font-size: 16px; /* حجم النص */
+    
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل */
+  
+   
+}
 
 /* تحسين الأعلام */
 .flag-icon {
@@ -21,9 +45,8 @@
 
 
 
-.btn.btn-secondary.dropdown-toggle {
-    position: relative;
-    top: -5px; /* رفع الزر للأعلى */
+.btn:not(:disabled):not(.disabled) {
+    margin-top: 10px; /* تعديل المسافة من الأعلى */
 }
 
 

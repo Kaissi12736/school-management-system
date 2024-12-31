@@ -1,3 +1,5 @@
+
+
 // الغرض: تأكيد حذف الصفوف
 
 function confirmation(event, gradeId) {
@@ -15,8 +17,8 @@ function confirmation(event, gradeId) {
         if (result.isConfirmed) {
             document.getElementById(`formExlu${gradeId}`).submit();
             Swal.fire({
-                title: translations.successTitle, // استخدام الترجمة
-                text: translations.successMessage, // استخدام الترجمة
+                title: translations.successTitle, 
+                text: translations.successMessage, 
                 icon: "success",
                 timer: 10000,
                 timerProgressBar: false,

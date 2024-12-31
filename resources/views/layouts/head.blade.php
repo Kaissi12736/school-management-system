@@ -1,28 +1,27 @@
 <!-- Title -->
-<title>@yield("title", "Default Title")</title> <!-- إضافة عنوان افتراضي في حال عدم تحديده -->
+<title>@yield("title", "Default Title")</title>
+
+<!-- Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700">
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}" type="image/x-icon" />
+{{-- <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}"> --}}
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.css">
 
-<!-- Font -->
-<link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Poppins:200,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900">
-
-<!-- Icons -->    
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.css"> 
- 
+<!-- Bootstrap -->
 
 
 
-
-<!-- Custom CSS (Page-specific CSS) -->
+<!-- Page-specific CSS -->
 @yield('css')
 
-<!-- Main Style CSS -->
+<!-- Main CSS -->
 <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
 
-<!-- Directional CSS based on Locale -->
+<!-- RTL or LTR CSS -->
 @if (App::getLocale() == 'en')
     <link href="{{ URL::asset('assets/css/ltr.css') }}" rel="stylesheet">
 @else

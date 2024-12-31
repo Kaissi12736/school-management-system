@@ -4,20 +4,20 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGradesTable extends Migration {
+class CreateClassroomsTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('Grades', function(Blueprint $table) {
+		Schema::create('Classrooms', function(Blueprint $table) {
 			$table->id();
-			$table->string('Name')->unique();
-			$table->text('Notes')->nullable();
 			$table->timestamps();
+			$table->bigInteger('Grade_id')->unsigned();
+			$table->string('Name_Class');
 		});
 	}
 
 	public function down()
 	{
-		Schema::drop('Grades');
+		Schema::drop('Classrooms');
 	}
 }
