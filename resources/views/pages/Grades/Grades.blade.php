@@ -31,9 +31,10 @@
         <script>
             < div >
                 {{ session('flasher') }} <
-                /div>
+                </div>
         </script>
     @endif
+
 
 
     <div class="col-xl-12 mb-30">

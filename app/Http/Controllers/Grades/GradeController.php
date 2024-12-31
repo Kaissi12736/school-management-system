@@ -45,19 +45,19 @@ class GradeController extends Controller
   public function store(StoreGrades $request)
   {
 
-    // تحقق من وجود المرحلة مسبقًا في قاعدة البيانات
+    // تحقق من وجود المرحلة مسبقًا في قاعدة البيانات 
 
-    if (Grade::where('Name->ar', $request->Name)
-      ->orWhere('Name->en', $request->Name_en)
-      ->exists()
-    ) {
+    // if (Grade::where('Name->ar', $request->Name)
+    //   ->orWhere('Name->en', $request->Name_en)
+    //   ->exists()
+    // ) {
 
-      flash()
-        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
-        ->error(trans('Grades_trans.exists'));
+    //   flash()
+    //     ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+    //     ->error(trans('Grades_trans.exists'));
 
-      return redirect()->route('Grades.index');
-    }
+    //   return redirect()->route('Grades.index');
+    // }
 
 
     try {
@@ -141,18 +141,23 @@ class GradeController extends Controller
    */
   public function destroy(Request $request)
   {
-    try {
-      // حذف العنصر
-      $grade = Grade::findOrFail($request->id)->delete();
+      try {
+          // حذف العنصر
+          $grade = Grade::findOrFail($request->id)->delete();
+  
+          // إرسال رسالة النجاح إلى الجلسة باستخدام الترجمة
+          flash()
+        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
 
-      // إرسال رسالة النجاح إلى الجلسة
-      session()->flash('delete_grade', 'تم حذف الصف بنجاح!');
+        ->success(trans('messages.Delete'));
 
-      // إعادة التوجيه
-      return redirect()->route('Grades.index');
-    } catch (\Exception $e) {
-      // في حالة حدوث خطأ
-      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-    }
+  
+          // إعادة التوجيه
+          return redirect()->route('Grades.index');
+      } catch (\Exception $e) {
+          // في حالة حدوث خطأ
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
   }
+  
 }

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreGrades;
 use Flasher\Prime\FlasherInterface;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreClassroom;
 use Illuminate\Support\Facades\Session;
 
 
@@ -44,11 +45,13 @@ class ClassroomController extends Controller
    *
    * @return Response
    */
-  public function store(Request $request)
+  public function store(StoreClassroom $request)
   {
     $List_Classes = $request->List_Classes;
 
     try {
+
+        $validated = $request->validated();
 
         foreach ($List_Classes as $List_Class) {
 
@@ -113,22 +116,59 @@ class ClassroomController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request)
   {
-    
+
+      try {
+
+          $Classrooms = Classroom::findOrFail($request->id);
+
+          $Classrooms->update([
+
+              $Classrooms->Name_Class = ['ar' => $request->Name, 'en' => $request->Name_en],
+              $Classrooms->Grade_id = $request->Grade_id,
+          ]);
+          flash()
+        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+
+        ->success(trans('messages.Update'));
+          return redirect()->route('Classrooms.index');
+      }
+
+      catch
+      (\Exception $e) {
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
+
+
   }
 
   /**
    * Remove the specified resource from storage.
    *
-   * @param  int  $id
+   * @param int $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request $request)
   {
-    
-  }
-  
-}
+    try {
+        // حذف العنصر
+      $Classrooms = Classroom::findOrFail($request->id)->delete();
+      flash()
+      ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
 
-?>
+         // إرسال رسالة النجاح إلى الجلسة
+         
+        ->info(trans('messages.Delete'));
+
+
+      return redirect()->route('Classrooms.index');
+    } catch (\Exception $e) {
+      // في حالة حدوث خطأ
+      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+    }
+    
+
+  }
+
+}
