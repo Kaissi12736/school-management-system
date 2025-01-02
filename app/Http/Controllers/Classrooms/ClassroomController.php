@@ -170,5 +170,42 @@ class ClassroomController extends Controller
     
 
   }
+  public function delete_all(Request $request)
+  {
+      // تقسيم القيم وتحويلها إلى مصفوفة
+      $delete_all_id = explode(",", $request->delete_all_id);
+  
+      // تصفية القيم للتأكد أنها أرقام صحيحة فقط
+      $valid_ids = array_filter($delete_all_id, function ($id) {
+          return is_numeric($id);
+      });
+  
+      // تنفيذ الحذف إذا كانت هناك قيم صالحة
+      if (!empty($valid_ids)) {
+          Classroom::whereIn('id', $valid_ids)->delete();
+
+          flash()
+          ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+
+         // إرسال رسالة النجاح إلى الجلسة
+          ->info(trans('messages.Delete'));
+
+      } else {
+          flash()->error(trans('messages.No_Valid_IDs'));
+      }
+  
+      return redirect()->route('Classrooms.index');
+  }
+  
+
+
+  public function Filter_Classes(Request $request)
+  {
+      $Grades = Grade::all();
+      $Search = Classroom::select('*')->where('Grade_id','=',$request->Grade_id)->get();
+      return view('pages.My_Classes.My_Classes',compact('Grades'))->withDetails($Search);
+
+  }
+
 
 }

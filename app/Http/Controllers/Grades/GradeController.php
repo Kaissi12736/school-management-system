@@ -4,14 +4,15 @@
 namespace App\Http\Controllers\Grades;
 
 use App\Models\Grade;
+use App\Models\Classroom;
+
+
 use Illuminate\Http\Request;
-
-
 use App\Http\Requests\StoreGrades;
-use App\Http\Controllers\Controller;
 
-use Illuminate\Support\Facades\Session;
 use Flasher\Prime\FlasherInterface;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -141,23 +142,57 @@ class GradeController extends Controller
    */
   public function destroy(Request $request)
   {
-      try {
-          // حذف العنصر
-          $grade = Grade::findOrFail($request->id)->delete();
+      // try {
+      //     // حذف العنصر
+      //     $grade = Grade::findOrFail($request->id)->delete();
   
-          // إرسال رسالة النجاح إلى الجلسة باستخدام الترجمة
-          flash()
-        ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+      //     // إرسال رسالة النجاح إلى الجلسة باستخدام الترجمة
+      //     flash()
+      //   ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
 
-        ->success(trans('messages.Delete'));
+      //   ->success(trans('messages.Delete'));
 
   
-          // إعادة التوجيه
-          return redirect()->route('Grades.index');
-      } catch (\Exception $e) {
-          // في حالة حدوث خطأ
-          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-      }
+      //     // إعادة التوجيه
+      //     return redirect()->route('Grades.index');
+      // } catch (\Exception $e) {
+      //     // في حالة حدوث خطأ
+      //     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      // }
+
+
+    
+  $MyClass_id = Classroom::where('Grade_id',$request->id)->pluck('Grade_id');
+
+  if($MyClass_id->count() == 0){
+
+      $Grades = Grade::findOrFail($request->id)->delete();
+      flash()
+      ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+      ->success(trans('messages.Delete'));
+      return redirect()->route('Grades.index');
+  }
+
+  else{
+
+    flash()
+      ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+      ->error(trans('Grades_trans.delete_Grade_Error'));
+      return redirect()->route('Grades.index');
+
+     
+
+  }
+
+
+
+
+
+
+
+
+
+
   }
   
 }

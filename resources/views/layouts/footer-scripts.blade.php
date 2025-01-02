@@ -1,23 +1,30 @@
-<!-- jquery -->
+<!-- JQuery -->
 <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
 
-<!-- plugins-jquery -->
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/fixedcolumns/3.3.2/js/dataTables.fixedColumns.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+
+
+<!-- Plugins -->
 <script src="{{ asset('assets/js/plugins-jquery.js') }}"></script>
-{{-- <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script> --}}
-
-
-<!-- plugin_path -->
 <script type="text/javascript">var plugin_path = '{{ asset('assets/js') }}/';</script>
 
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!-- Bootstrap Select -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
+
+<!-- Bootstrap Select -->
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script> --}}
+
+
+
+
+<!-- Notifications -->
 <script src="{{ asset('assets/js/notify.min.js') }}"></script>
 
-<!-- تعريف النصوص المترجمة -->
+<!-- Translations -->
 <script>
     const translations = {
         confirmDeleteTitle: "{{ __('main_trans.confirm_delete_title') }}",
@@ -36,8 +43,10 @@
     };
 </script>
 
+<!-- Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- ملفك الخاص -->
+<!-- Grades JS -->
 <script src="{{ asset('assets/js/grades.js') }}"></script>
 
 <!-- DataTables -->
@@ -55,7 +64,7 @@
     });
 </script>
 
-<!-- باقي الملفات -->
+<!-- Additional JS -->
 <script src="{{ asset('assets/js/chart-init.js') }}"></script>
 <script src="{{ asset('assets/js/calendar.init.js') }}"></script>
 <script src="{{ asset('assets/js/sparkline.init.js') }}"></script>
@@ -64,4 +73,23 @@
 <script src="{{ asset('assets/js/validation.js') }}"></script>
 <script src="{{ asset('assets/js/lobilist.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+
 @yield('js')
+
+<!-- Check All Function -->
+<script>
+    function CheckAll(className, elem) {
+        var elements = document.getElementsByClassName(className);
+        var l = elements.length;
+
+        if (elem.checked) {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = true;
+            }
+        } else {
+            for (var i = 0; i < l; i++) {
+                elements[i].checked = false;
+            }
+        }
+    }
+</script>

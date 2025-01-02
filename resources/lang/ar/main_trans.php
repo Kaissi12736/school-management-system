@@ -41,5 +41,22 @@ return [
     'validation_message' => 'يجب ملء جميع الحقول!',
     'success_title' => ' العملية الحدف',
     'success_message' => 'تمت عملية الحذف بنجاح',
-    'List_classes' => 'قائمة الصفوف',
+    'List_classes'=>'قائمة الصفوف الدراسية',
+    
+    'sections'=>'الاقسام',
+    'List_sections'=>'قائمة الاقسام الدراسية',
+    'students'=>'الطلاب',
+    'Teachers'=>'المعلمين',
+    'Parents'=>'اولياء الامور',
+    'Accounts'=>'الحسابات',
+    'Attendance'=>'الحضور والغياب',
+    'Exams'=>'الامتحانات',
+    'library'=>'المكتبة',
+    'Onlineclasses'=>'حصص اونلاين',
+    'Settings'=>'الاعدادات',
+    'Users'=>'المستخدمين',
+    'Copyright' => 'جميع الحقوق محفوظة ',
+    'Name_Programer' => 'سمير جمال مورا سوفت'
+
+
 ];
