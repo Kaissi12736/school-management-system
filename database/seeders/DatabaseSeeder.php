@@ -1,23 +1,23 @@
 <?php
 
-namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\BloodTableSeeder;
+use Database\Seeders\ReligionTableSeeder;
+use Database\Seeders\NationalitiesTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
+        $this->call(BloodTableSeeder::class);
+        $this->call(NationalitiesTableSeeder::class);
+        $this->call(ReligionTableSeeder::class);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
     }
 }

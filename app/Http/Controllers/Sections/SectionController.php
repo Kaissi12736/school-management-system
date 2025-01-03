@@ -29,12 +29,13 @@ class SectionController extends Controller
   public function index()
   {
 
-    $Grades = Grade::with(['Sections'])->get();
+    $Grades = Grade::with(['Sections' => function ($query) {
+      $query->whereHas('My_classs'); // جلب فقط الأقسام المرتبطة
+  }])->get();
 
-    $list_Grades = Grade::all();
+  $list_Grades = Grade::all();
 
-    return view('pages.Sections.Sections',compact('Grades','list_Grades'));
-
+  return view('pages.Sections.Sections', compact('Grades', 'list_Grades'));
   }
 
   /**

@@ -18,7 +18,8 @@
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-                    <a class="button x-small" href="#" data-toggle="modal" data-target="#exampleModal">
+                    <a class="btn btn-dark btn-lg" href="#" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
                         {{ trans('Sections_trans.add_section') }}</a>
                 </div>
 
@@ -37,12 +38,12 @@
 
                 <div class="card card-statistics h-100">
                     <div class="card-body">
-                        <div class="accordion gray plus-icon round">
+                        <div class="accordion gray plus-icon round ">
 
                             @foreach ($Grades as $Grade)
 
-                                <div class="acd-group">
-                                    <a href="#" class="acd-heading">{{ $Grade->Name }}</a>
+                                <div class="acd-group ">
+                                    <a href="#" class="acd-heading  bg-primary text-white">{{ $Grade->Name }}</a>
                                     <div class="acd-des">
 
                                         <div class="row">
