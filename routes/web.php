@@ -1,10 +1,11 @@
 <?php
 
+use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\Grades\GradeController;
-
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -38,11 +39,15 @@ Route::resource('Sections',  SectionController::class);
 
 Route::get('/classes/{id}', [SectionController::class, 'getclasses']);
 
-  
-
+ //==============================livewire============================
+Route::view('add_parent', 'livewire.show_Form')->name('add_parent');
+// إضافة تحديث Livewire للغات
+Livewire::setUpdateRoute(function ($handle) {
+    return Route::post('/livewire/update', $handle);
 });
 
 
+});
 
 
 //====================breez auth============================================
