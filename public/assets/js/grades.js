@@ -104,7 +104,7 @@ function addGrade() {
                 </div>
                 <div class="form-group text-left mt-3" font-size: 18px; font-family: Arial, sans-serif;">
                     <label>${translations.notesLabel}:</label>
-                    <textarea id="addNotes" class="form-control" rows="3" style="font-size: 16px; padding: 10px;" required></textarea>
+                    <textarea id="addNotes" class="form-control" rows="3" style="font-size: 16px; padding: 10px;"></textarea>
                 </div>
             </form>
         `,
@@ -121,25 +121,27 @@ function addGrade() {
             const nameAr = document.getElementById('addNameAr').value.trim();
             const nameEn = document.getElementById('addNameEn').value.trim();
             const notes = document.getElementById('addNotes').value.trim();
-
-            if (!nameAr || !nameEn || !notes) {
+        
+            // التحقق فقط من الحقول المطلوبة
+            if (!nameAr || !nameEn) {
                 Swal.showValidationMessage(translations.validationMessage); // رسالة التحقق
                 return false;
             }
-
+        
             // تحديث القيم داخل النموذج المخفي
             const form = document.getElementById('formAddGrade');
             if (form) {
                 form.querySelector('input[name="Name"]').value = nameAr;
                 form.querySelector('input[name="Name_en"]').value = nameEn;
                 form.querySelector('input[name="Notes"]').value = notes;
-
+        
                 // إرسال النموذج
                 form.submit();
             } else {
                 console.error("Form 'formAddGrade' not found.");
             }
         }
+        
     });
 }
 

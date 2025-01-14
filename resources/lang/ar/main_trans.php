@@ -36,6 +36,10 @@ return [
   'cancel_button' => 'إلغاء',
   'success_title' => 'تم الحذف!',
   'success_message' => 'تم حذف العنصر بنجاح.',
-
+  'save_changes' => 'حفظ',
+    'stage_name_ar' => 'اسم المرحلة باللغة العربية',
+      'stage_name_en' => 'اسم المرحلة باللغة الانجليزية',
+      'Notes' => 'ملاحظات',
+  'add_Grade' => 'اضافة مرحلة دراسية'
 
 ];

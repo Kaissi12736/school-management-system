@@ -1,19 +1,20 @@
 <?php
 namespace App\Http\Controllers\Sections;
 use App\Models\Grade;
+use App\Models\Section;
+use App\Models\Teacher;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGrades;
+
 use Flasher\Prime\FlasherInterface;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\StoreClassroom;
-use Illuminate\Support\Facades\Session;
-
-
-use App\Models\Section;
 
 use App\Http\Requests\StoreSections;
+
+use App\Http\Requests\StoreClassroom;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -28,14 +29,16 @@ class SectionController extends Controller
    */
   public function index()
   {
+    // $teachers = Teacher::findOrFail(2);
+    // return $teachers->Sections;
 
     $Grades = Grade::with(['Sections' => function ($query) {
       $query->whereHas('My_classs'); // جلب فقط الأقسام المرتبطة
   }])->get();
-
+  $teachers = Teacher::all();
   $list_Grades = Grade::all();
 
-  return view('pages.Sections.Sections', compact('Grades', 'list_Grades'));
+  return view('pages.Sections.Sections', compact('Grades', 'list_Grades','teachers'));
   }
 
   /**
@@ -56,6 +59,7 @@ class SectionController extends Controller
       $Sections->Class_id = $request->Class_id;
       $Sections->Status = 1;
       $Sections->save();
+      $Sections->teachers()->attach($request->teacher_id);
       flash()
       ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
       ->success(trans('messages.success'));

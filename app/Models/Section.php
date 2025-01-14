@@ -22,4 +22,9 @@ class Section extends Model
         return $this->belongsTo(Classroom::class, 'Class_id');
     }
 
+       // علاقة الاقسام مع المعلمين
+       public function teachers()
+       {
+           return $this->belongsToMany(Teacher::class,'teacher_section');
+       }
 }

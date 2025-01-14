@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Teachers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Repository\TeacherRepositoryInterface;
 
 class TeacherController extends Controller
@@ -22,7 +23,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $this->Teacher->getAllTeachers();
+        $Teachers = $this->Teacher->getAllTeachers();
+        $Teachers = Teacher::all();
+        return view('pages.Teachers.Teachers',compact('Teachers'));
     }
 
     /**
@@ -32,7 +35,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        $specializations = $this->Teacher->Getspecialization();
+         $genders = $this->Teacher->GetGender();
+         return view('pages.Teachers.create',compact('specializations','genders'));
     }
 
     /**
@@ -43,7 +48,7 @@ class TeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->Teacher->StoreTeachers($request);
     }
 
     /**
