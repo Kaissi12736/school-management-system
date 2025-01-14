@@ -15,9 +15,6 @@
 
 
 
-<!-- Bootstrap Select -->
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script> --}}
-
 
 
 
@@ -44,7 +41,7 @@
 </script>
 
 <!-- Bootstrap Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIqj8mOnyZ2mbz4YiCWj4f9Xj3jtMp4ylr60CmDXm9uBoqKbFVm" crossorigin="anonymous">
 
 <!-- Grades JS -->
 <script src="{{ asset('assets/js/grades.js') }}"></script>

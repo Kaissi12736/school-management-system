@@ -29,58 +29,34 @@
                 <td>
                     <button wire:click="edit({{ $my_parent->id }})" title="{{ trans('Grades_trans.Edit') }}"
                             class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
+
                             
-                         
-                            
-                          
-                            <!-- زر الحذف -->
-                            <button type="button" class="btn btn-danger btn-sm"
-                                onclick="deleteLivewire(event, {{ $my_parent->id }})"
-                                title="{{ trans('Grades_trans.Delete') }}">
-                                <i class="fa fa-trash"></i>
-                            </button>
+                         <button onclick="confirmDelete({{ $my_parent->id }})" class="btn btn-danger btn-sm"
+                            title="{{ trans('Grades_trans.Delete') }}">
+                            <i class="fa fa-trash"></i>
+                        </button>
                         
-                        
-                        
-                            
-                        
-                        
-                                        </td>
+                 </td>
             </tr>
         @endforeach
     </table>
 </div>
 <script>
-function deleteLivewire(event, id) {
-    event.preventDefault();
-
-    Swal.fire({
-        title: "تأكيد الحذف",
-        text: "هل أنت متأكد أنك تريد حذف هذا العنصر؟",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "نعم، احذف!",
-        cancelButtonText: "إلغاء"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Livewire.emit('delete', id);
-        }
-    });
-}
-
-// لإظهار رسالة نجاح عند تحديث القائمة
-Livewire.on('refreshParentList', () => {
-    Swal.fire({
-        title: "تم الحذف!",
-        text: "تم حذف العنصر بنجاح.",
-        icon: "success",
-        timer: 5000,
-        timerProgressBar: true,
-        showConfirmButton: false
-    });
-});
-
-
-</script>
+    function confirmDelete(id) {
+          Swal.fire({
+              title: "{{ __('main_trans.confirm_delete_title') }}", // ترجمة العنوان
+              text: "{{ __('main_trans.confirm_delete_text') }}",   // ترجمة النص
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "{{ __('main_trans.confirm_button') }}", // ترجمة زر التأكيد
+              cancelButtonText: "{{ __('main_trans.cancel_button') }}"    // ترجمة زر الإلغاء
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  Livewire.dispatch('delete', { id: id }); // تمرير البيانات ككائن
+              }
+          });
+      }
+  </script>
+  

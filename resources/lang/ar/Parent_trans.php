@@ -36,7 +36,9 @@ return [
     'Choose' => 'اختيار من القائمة',
     'add_parent' => 'اضافة ولى امر',
     'Processes' => 'العمليات',
-
+    'Attachments' => 'المرفقات',
+    'SelectFiles' => 'اختيار الملفات',
+    'FilesSelected' => '  الملفات المختارة ',
 
 
 

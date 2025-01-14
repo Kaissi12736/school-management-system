@@ -4,8 +4,8 @@ return [
 
     'Dashboard'=>'Dashboard',
     'Dashboard_page'=>'Dashboard',
-    'Main_title' => 'MoraSoft School Management Program',
-    'Programname' => 'MoraSoft School Management Program',
+    'Main_title' => ' School Management Program',
+    'Programname' => ' School Management Program',
     'change_language'=>'language',
     'Grades'=>'Grades',
     'Grades_list'=>'Grades List',
@@ -33,7 +33,7 @@ return [
     'Settings'=>'Settings',
     'Users'=>'Users',
     'Copyright' => 'Copyright',
-    'Name_Programer' => 'SamirGamal MoraSoft All Rights Reserved',
+    'Name_Programer' => ' All Rights Reserved',
     'confirm_delete_title' => 'Are you sure?',
     'confirm_delete_text' => 'You won’t be able to revert this!',
     'confirm_button' => 'Yes, delete it!',
@@ -47,5 +47,6 @@ return [
     'save_changes' => 'Save Changes',
     'validation_message' => 'Please fill in all the fields!',
     'add_Grade' => 'Add Grade',
+   
     
 ];

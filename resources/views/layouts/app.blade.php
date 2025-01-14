@@ -33,7 +33,4 @@
             </main>
         </div>
     </body>
-    <!-- Grades JS -->
-<script src="{{ URL::asset('assets/js/grades.js') }}"></script>
-
 </html>

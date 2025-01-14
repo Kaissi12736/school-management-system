@@ -5,8 +5,8 @@ return [
 
   'Dashboard'=>'الرئيسية',
   'Dashboard_page'=>'لوحة التحكم',
-  'Main_title'=>'برنامج مورا سوفت لادارة المدارس',
-  'Programname' => 'برنامج مورا سوفت لادارة المدارس',
+  'Main_title'=>'برنامج لادارة المدارس',
+  'Programname' => 'برنامج لادارة المدارس',
   'change_language'=>'تغير اللغة',
   'Grades'=>'المراحل الدراسية',
   'Grades_list'=>'قائمة المراحل الدراسية',
@@ -27,7 +27,15 @@ return [
   'Settings'=>'الاعدادات',
   'Users'=>'المستخدمين',
   'Copyright' => 'جميع الحقوق محفوظة ',
-  'Name_Programer' => 'سمير جمال مورا سوفت'
+  'Name_Programer' => 'مصطفى سوفت',
+
+  'List_Teachers' => 'قائمة المعلمين',
+  'confirm_delete_title' => 'تأكيد الحذف',
+  'confirm_delete_text' => 'هل أنت متأكد أنك تريد حذف هذا العنصر؟',
+  'confirm_button' => 'نعم، احذف!',
+  'cancel_button' => 'إلغاء',
+  'success_title' => 'تم الحذف!',
+  'success_message' => 'تم حذف العنصر بنجاح.',
 
 
 ];

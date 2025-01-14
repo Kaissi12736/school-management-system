@@ -33,4 +33,7 @@ return [
     'Job_Mother_en' => 'Job English',
     'add_parent' => 'Add Parent',
     'Processes' => 'Processes',
+    'Attachments' => 'Attachments',
+    'SelectFiles' => 'Select Files',
+    'FilesSelected' => 'Files Selected',
 ];

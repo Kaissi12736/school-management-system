@@ -37,7 +37,11 @@ class CreateForeignKeys extends Migration {
             $table->foreign('parent_id')->references('id')->on('my__parents')
             ->onDelete('cascade');
         });
-
+        Schema::table('teachers', function(Blueprint $table) {
+        $table->foreign('Specialization_id')->references('id')->on('specializations')
+        ->onDelete('cascade');
+        $table->foreign('Gender_id')->references('id')->on('genders')->onDelete('cascade');
+    });
 
 	}
 

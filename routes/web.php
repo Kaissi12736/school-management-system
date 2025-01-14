@@ -4,6 +4,7 @@ use Livewire\Livewire;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Teachers\TeacherController;
 
 use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\Sections\SectionController;
@@ -46,6 +47,8 @@ Livewire::setUpdateRoute(function ($handle) {
     return Route::post('/livewire/update', $handle);
 });
 
+Route::resource('Teachers', TeacherController::class);
+
 
 });
 
@@ -59,3 +62,32 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
