@@ -62,7 +62,10 @@ class TeacherRepository implements TeacherRepositoryInterface{
           $Teachers->Joining_Date = $request->Joining_Date;
           $Teachers->Address = $request->Address;
           $Teachers->save();
-          // toastr()->success(trans('messages.Update'));
+          
+          flash()
+          ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+          ->success(trans('messages.Update'));         
           return redirect()->route('Teachers.index');
       }
       catch (Exception $e) {
@@ -74,7 +77,11 @@ class TeacherRepository implements TeacherRepositoryInterface{
   public function DeleteTeachers($request)
   {
       Teacher::findOrFail($request->id)->delete();
-      // toastr()->error(trans('messages.Delete'));
+      flash()
+      ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+      ->error(trans('messages.Delete'));        
       return redirect()->route('Teachers.index');
+
+     
   }
 }
