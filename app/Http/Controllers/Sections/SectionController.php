@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Sections;
+
 use App\Models\Grade;
 use App\Models\Section;
 use App\Models\Teacher;
@@ -9,8 +11,6 @@ use App\Http\Requests\StoreGrades;
 
 use Flasher\Prime\FlasherInterface;
 use App\Http\Controllers\Controller;
-
-
 use App\Http\Requests\StoreSections;
 
 use App\Http\Requests\StoreClassroom;
@@ -22,121 +22,117 @@ use Illuminate\Support\Facades\Session;
 class SectionController extends Controller
 {
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
-  public function index()
-  {
-    // $teachers = Teacher::findOrFail(2);
-    // return $teachers->Sections;
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        // $teachers = Teacher::findOrFail(2);
+        // return $teachers->Sections;
 
-    $Grades = Grade::with(['Sections' => function ($query) {
-      $query->whereHas('My_classs'); // جلب فقط الأقسام المرتبطة
-  }])->get();
-  $teachers = Teacher::all();
-  $list_Grades = Grade::all();
+        $Grades = Grade::with(['Sections' => function ($query) {
+            $query->whereHas('My_classs'); // جلب فقط الأقسام المرتبطة
+        }])->get();
+        $teachers = Teacher::all();
+        $list_Grades = Grade::all();
 
-  return view('pages.Sections.Sections', compact('Grades', 'list_Grades','teachers'));
-  }
+        return view('pages.Sections.Sections', compact('Grades', 'list_Grades', 'teachers'));
+    }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
-  public function store(StoreSections $request)
-  {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store(StoreSections $request)
+    {
 
-    try {
+        try {
 
-      $validated = $request->validated();
-      $Sections = new Section();
+            $validated = $request->validated();
+            $Sections = new Section();
 
-      $Sections->Name_Section = ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En];
-      $Sections->Grade_id = $request->Grade_id;
-      $Sections->Class_id = $request->Class_id;
-      $Sections->Status = 1;
-      $Sections->save();
-      $Sections->teachers()->attach($request->teacher_id);
-      flash()
-      ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
-      ->success(trans('messages.success'));
-      return redirect()->route('Sections.index');
-   
-  }
-
-  catch (\Exception $e){
-      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-  }
-
-  }
+            $Sections->Name_Section = ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En];
+            $Sections->Grade_id = $request->Grade_id;
+            $Sections->Class_id = $request->Class_id;
+            $Sections->Status = 1;
+            $Sections->save();
+            $Sections->teachers()->attach($request->teacher_id);
+            flash()
+                ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+                ->success(trans('messages.success'));
+                return redirect()->route('Sections.index');
+        } catch (\Exception $e) {
+                return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
 
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function update(StoreSections $request)
-  {
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update(StoreSections $request)
+    {
+        try {
+            // التحقق من صحة البيانات
+            $validated = $request->validated();
 
-    try {
-      $validated = $request->validated();
-      $Sections = Section::findOrFail($request->id);
+            // جلب القسم المطلوب
+            $Sections = Section::findOrFail($request->id);
 
-      $Sections->Name_Section = ['ar' => $request->Name_Section_Ar, 'en' => $request->Name_Section_En];
-      $Sections->Grade_id = $request->Grade_id;
-      $Sections->Class_id = $request->Class_id;
+            // تحديث بيانات القسم
+            $Sections->Name_Section = [
+                'ar' => $request->Name_Section_Ar,
+                'en' => $request->Name_Section_En,
+            ];
+            $Sections->Grade_id = $request->Grade_id;
+            $Sections->Class_id = $request->Class_id;
+            $Sections->Status = isset($request->Status) ? 1 : 2;
 
-      if(isset($request->Status)) {
-        $Sections->Status = 1;
-      } else {
-        $Sections->Status = 2;
-      }
+            // تحديث العلاقة في الجدول الوسيط
+            $Sections->teachers()->sync($request->teacher_id ?? []);
 
-      $Sections->save();
-      flash()
-    ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
-    ->success(trans('messages.Update'));
-    return redirect()->route('Sections.index');
-  
+            // حفظ التحديثات
+            $Sections->save();
 
-      return redirect()->route('Sections.index');
-  }
-  catch
-  (\Exception $e) {
-      return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-  }
+            // رسالة النجاح
+            flash()
+                ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+                ->success(trans('messages.Update'));
 
-  }
+            // إعادة التوجيه
+            return redirect()->route('Sections.index');
+        } catch (\Exception $e) {
+            // التعامل مع الأخطاء
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function destroy(request $request)
-  {
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy(request $request)
+    {
 
-    Section::findOrFail($request->id)->delete();
-    flash()
-    ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
-    ->success(trans('messages.Delete'));
-    return redirect()->route('Sections.index');
+        Section::findOrFail($request->id)->delete();
+        flash()
+            ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+            ->success(trans('messages.Delete'));
+        return redirect()->route('Sections.index');
+    }
 
-  }
-
-  public function getclasses($id)
+    public function getclasses($id)
     {
         $list_classes = Classroom::where("Grade_id", $id)->pluck("Name_Class", "id");
 
         return $list_classes;
     }
-
 }
-
-?>

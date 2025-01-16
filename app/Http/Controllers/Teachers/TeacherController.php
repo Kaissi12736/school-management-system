@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Teachers;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use App\Repository\TeacherRepositoryInterface;
 
 class TeacherController extends Controller
@@ -71,10 +72,17 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $Teachers = $this->Teacher->editTeachers($id);
-        $specializations = $this->Teacher->Getspecialization();
-        $genders = $this->Teacher->GetGender();
-        return view('pages.Teachers.edit',compact('Teachers','specializations','genders'));
+        $specializations = Cache::remember('specializations', 60, function() {
+            return $this->Teacher->Getspecialization();
+        });
+        
+        $genders = Cache::remember('genders', 60, function() {
+            return $this->Teacher->GetGender();
+        });
+    
+        return view('pages.Teachers.edit', compact('Teachers', 'specializations', 'genders'));
     }
+    
 
     /**
      * Update the specified resource in storage.

@@ -8,7 +8,9 @@
 
 <!-- Plugins -->
 <script src="{{ asset('assets/js/plugins-jquery.js') }}"></script>
-<script type="text/javascript">var plugin_path = '{{ asset('assets/js') }}/';</script>
+<script type="text/javascript">
+    var plugin_path = '{{ asset('assets/js') }}/';
+</script>
 
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -16,14 +18,17 @@
 
 
 
+<!-- سكريبتات Toastr -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
 <!-- Notifications -->
 <script src="{{ asset('assets/js/notify.min.js') }}"></script>
 
+
+
 <!-- Translations -->
 <script>
-    
     const translations = {
         confirmDeleteTitle: "{{ __('main_trans.confirm_delete_title') }}",
         confirmDeleteText: "{{ __('main_trans.confirm_delete_text') }}",
@@ -42,8 +47,10 @@
 </script>
 
 <!-- Bootstrap Bundle -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-pzjw8f+ua7Kw1TIqj8mOnyZ2mbz4YiCWj4f9Xj3jtMp4ylr60CmDXm9uBoqKbFVm" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-pzjw8f+ua7Kw1TIqj8mOnyZ2mbz4YiCWj4f9Xj3jtMp4ylr60CmDXm9uBoqKbFVm" crossorigin="anonymous">
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 

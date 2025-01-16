@@ -47,6 +47,8 @@ return [
     'save_changes' => 'Save Changes',
     'validation_message' => 'Please fill in all the fields!',
     'add_Grade' => 'Add Grade',
+    'add_student' => 'Add Student',
+    'list_students' => 'List Students'
    
     
 ];

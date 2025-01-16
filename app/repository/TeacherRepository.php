@@ -34,7 +34,7 @@ class TeacherRepository implements TeacherRepositoryInterface{
           $Teachers->save();
           flash()
           ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
-          ->success(trans('messages.Update'));         
+          ->success(trans('messages.success'));         
            return redirect()->route('Teachers.create');
       }
       catch (Exception $e) {
@@ -46,10 +46,13 @@ class TeacherRepository implements TeacherRepositoryInterface{
 
   public function editTeachers($id)
   {
-      return Teacher::findOrFail($id);
+      try {
+          return Teacher::findOrFail($id);
+      } catch (Exception $e) {
+          return redirect()->back()->withErrors(['Teacher not found']);
+      }
   }
-
-
+  
   public function UpdateTeachers($request)
   {
       try {
