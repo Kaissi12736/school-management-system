@@ -23,7 +23,18 @@ return [
     'Student_Edit' => 'Student Edit',
     'Deleted_Student' => 'Deleted Student',
     'Deleted_Student_tilte' => 'Are you sure you want to delete the student ?',
-    'Close' => 'cancel'
+    'Close' => 'cancel',
+    'Attachments' => 'Attachments',
+    'Student_details' => 'Student Details',
+    'Deleted_Student' => 'Delete student data',
+    'Deleted_Student_tilte' => 'Are you sure to delete the student ?',
+    'Delete_attachment' => 'Delete_attachment',
+    'Delete_attachment_tilte' => 'Are you sure to delete the attachment?',
+    'filename' => 'filename',
+    'created_at' => 'created_at',
+    'Download' => 'Download',
+    'delete' => 'Delete',
+
     
 
 ];

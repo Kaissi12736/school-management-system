@@ -55,8 +55,27 @@ Route::controller(StudentController::class)->group(function () {
     Route::resource('Students', StudentController::class);
     Route::get('/Get_classrooms/{id}', 'Get_classrooms');
     Route::get('/Get_Sections/{id}', 'Get_Sections');
+
+
+    Route::post('upload', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
+    Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');
+    Route::post('delete',  [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
 });
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
 
 
 //====================breez auth============================================
