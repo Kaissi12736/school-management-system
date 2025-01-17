@@ -9,6 +9,7 @@ use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Teachers\TeacherController;
+use App\Http\Controllers\Students\PromotionController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -50,6 +51,8 @@ Livewire::setUpdateRoute(function ($handle) {
 
 Route::resource('Teachers', TeacherController::class);
 
+
+
   //============================== Students =============================
 Route::controller(StudentController::class)->group(function () {
     Route::resource('Students', StudentController::class);
@@ -62,8 +65,8 @@ Route::controller(StudentController::class)->group(function () {
     Route::post('delete',  [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
 });
 
-
-
+    //==============================Promotion Students ============================
+    Route::resource('Promotion', PromotionController::class);
 });
 
 

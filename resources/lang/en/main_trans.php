@@ -32,6 +32,7 @@ return [
     'Onlineclasses'=>'Online classes',
     'Settings'=>'Settings',
     'Users'=>'Users',
+    'Students_Promotions'=>'Students Promotions',
     'Copyright' => 'Copyright',
     'Name_Programer' => ' All Rights Reserved',
     'confirm_delete_title' => 'Are you sure?',

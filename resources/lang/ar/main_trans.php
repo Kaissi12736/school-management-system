@@ -28,6 +28,7 @@ return [
   'Users'=>'المستخدمين',
   'Copyright' => 'جميع الحقوق محفوظة ',
   'Name_Programer' => 'مصطفى سوفت',
+  'Students_Promotions'=>'ترقية الطلاب',
 
   'List_Teachers' => 'قائمة المعلمين',
   'confirm_delete_title' => 'تأكيد الحذف',
