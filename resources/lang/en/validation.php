@@ -2,6 +2,42 @@
 
 return [
 
+
+
+    'required' => 'This field is required.',
+    'integer' => 'The value must be a valid integer.',
+    'different' => 'The value must be different.',
+    'exists' => 'The selected value is invalid.',
+    'string' => 'The value must be a string.',
+    'custom' => [
+        'Grade_id' => [
+            'required' => 'The grade is required.',
+            'integer' => 'The grade is invalid.',
+            'different' => 'The grade must be different from the academic year.',
+            'exists' => 'The grade does not exist.',
+        ],
+        'from_grade' => [
+            'required' => 'The current grade is required.',
+            'string' => 'The current grade must be a string.',
+            'different' => 'The current grade must be different from the new grade.',
+        ],
+        'academic_year_new' => [
+            'required' => 'The new academic year is required.',
+            'string' => 'The new academic year must be a string.',
+            'different' => 'The new academic year must be different from the current one.',
+        ],
+        'section_id' => [
+            'required' => 'The section is required.',
+            'integer' => 'The section is invalid.',
+            'exists' => 'The section does not exist.',
+        ],
+        'Classroom_id' => [
+            'required' => 'The classroom is required.',
+            'integer' => 'The classroom is invalid.',
+            'exists' => 'The classroom does not exist.',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
