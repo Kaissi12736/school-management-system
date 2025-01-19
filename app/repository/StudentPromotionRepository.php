@@ -9,6 +9,8 @@ use App\Models\promotion;
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Flasher\Prime\FlasherInterface;
+
 
 class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 {
@@ -29,20 +31,20 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         DB::beginTransaction();
     
         try {
-
-
-   
+            // تعريفات التحقق
             $validated = $request->validate([
-            //         'Grade_id' => 'required|integer|exists:students', // ان كانت المرحلة غير موجودة 
-            //     'Grade_id' => 'required|string|different:Grade_id_new',
-            //   'academic_year_new' => 'required|string|different:academic_year',
-              'academic_year' => 'required|integer|exists:students',
-                //  'section_id_new' => 'required|string|different:section_id',
-                //   'Classroom_id' => 'required|integer|exists:students',
-
-            ]); 
-  // جلب الطلاب من المرحلة المحددة
-            $students = student::where('Grade_id', $request->Grade_id)
+                'Grade_id' => 'required|integer|different:Grade_id_new|exists:students',
+                'Grade_id_new' => 'required|integer',
+                'academic_year_new' => 'required|string|different:academic_year',
+                'academic_year' => 'required|integer|exists:students',
+                'section_id_new' => 'required|string|different:section_id',
+                'Classroom_id' => 'required|integer|exists:students',
+                // 'Classroom_id_new' => 'required|integer|exists:students',
+                'section_id' => 'required|string|exists:students',
+            ]);
+    
+            // جلب الطلاب من المرحلة المحددة
+            $students = Student::where('Grade_id', $request->Grade_id)
                 ->where('Classroom_id', $request->Classroom_id)
                 ->where('section_id', $request->section_id)
                 ->where('academic_year', $request->academic_year)
@@ -84,17 +86,78 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()
-            ->withInput() // استرجاع القيم القديمة
-            ->withErrors(['error' => $e->getMessage()]); // عرض الأخطاء
-        
+                ->withInput() // استرجاع القيم القديمة
+                ->withErrors(['error' => $e->getMessage()]); // عرض الأخطاء
         }
     }
+
+    public function destroy($request)
+    {
+        DB::beginTransaction();
+
+        try {
+
+            // التراجع عن الكل
+            if($request->page_id ==1){
+
+             $Promotions = Promotion::all();
+             foreach ($Promotions as $Promotion){
+
+                 //التحديث في جدول الطلاب
+                 $ids = explode(',',$Promotion->student_id);
+                 student::whereIn('id', $ids)
+                 ->update([
+                 'Grade_id'=>$Promotion->from_grade,
+                 'Classroom_id'=>$Promotion->from_Classroom,
+                 'section_id'=> $Promotion->from_section,
+                 'academic_year'=>$Promotion->academic_year,
+               ]);
+
+                 //حذف جدول الترقيات
+                 Promotion::query()->delete();
+
+             }
+                DB::commit();
+              $this->flashDeleteMessage();
+                
+                return redirect()->back();
+
+
+            }
+
+            else{
+
+                $Promotion = Promotion::findorfail($request->id);
+                student::where('id', $Promotion->student_id)
+                    ->update([
+                        'Grade_id'=>$Promotion->from_grade,
+                        'Classroom_id'=>$Promotion->from_Classroom,
+                        'section_id'=> $Promotion->from_section,
+                        'academic_year'=>$Promotion->academic_year,
+                    ]);
+
+
+                Promotion::destroy($request->id);
+                DB::commit();
+                $this->flashDeleteMessage();
+                return redirect()->back();
+                }
+
+        }
+
+        catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+
 
             //____________________________________message flashe ________________________________________//
     
        
 
-        public function flashSuccessMessage()
+            public function flashSuccessMessage()
         {
             flash()
                 ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
@@ -104,7 +167,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         {
             flash()
                 ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
-                ->error(trans('messages.success'));
+                ->error(trans('messages.Delete'));
         }
 
 }

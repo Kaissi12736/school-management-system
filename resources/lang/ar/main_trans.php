@@ -43,6 +43,14 @@ return [
       'Notes' => 'ملاحظات',
   'add_Grade' => 'اضافة مرحلة دراسية',
   'add_student' => 'اضافة طالب جديد',
-  'list_students' => 'لائحة الطلاب'
+  'list_students' => 'لائحة الطلاب',
+
+  'Graduate_students'=>'الطلاب المتخرجين',
+  'add_Graduate'=>'اضافة تخرج جديد',
+  'list_Graduate'=>'قائمة التخرجات',
+  'Student_information' => 'معلومات الطالب',
+  'Students_Promotions'=>'ترقية الطلاب',
+  'add_Promotion'=>'اضافة ترقية جديدة',
+  'list_Promotions'=>'قائمة الترقيات',
 
 ];

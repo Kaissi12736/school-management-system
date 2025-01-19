@@ -9,6 +9,7 @@ use App\Http\Controllers\Grades\GradeController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Teachers\TeacherController;
+use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\PromotionController;
 use App\Http\Controllers\Classrooms\ClassroomController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -67,6 +68,8 @@ Route::controller(StudentController::class)->group(function () {
 
     //==============================Promotion Students ============================
     Route::resource('Promotion', PromotionController::class);
+
+    Route::resource('Graduated', GraduatedController::class);
 });
 
 

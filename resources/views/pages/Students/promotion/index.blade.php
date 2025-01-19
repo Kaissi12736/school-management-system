@@ -17,20 +17,24 @@
     <div class="row">
 
 
-
+        @if (session()->has('flasher'))
+        <script>
+            < div > {{ session('flasher') }}</div>
+        </script>
+    @endif
 
         <div class="col-md-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
 
-                    {{-- @if (Session::has('error_promotions'))
+                    @if (Session::has('error_promotions'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>{{Session::get('error_promotions')}}</strong>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                    @endif --}}
+                    @endif
 
                     @if ($errors->any())
                     <div class="alert alert-danger">
