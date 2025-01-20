@@ -49,7 +49,15 @@ return [
     'Current_Class' => 'الصف الدراسي الحالي',
     'Current_Section' => 'القسم الدراسي الحالي',
     'Revert_All' => 'إعادة كل',
-    
+    'view_student_data' => 'عرض بيانات الطالب',
+    'Actions' => 'العمليات',
+    'add_fee_invoice' => 'اضافة فاتورة رسوم',
+    'delete_student' => 'حذف بيانات الطالب',
+
+
+   
+
+
 
 
 

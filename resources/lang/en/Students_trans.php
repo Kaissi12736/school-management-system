@@ -48,6 +48,10 @@ return [
     'Current_Class' => 'Current Class',
     'Current_Section' => 'Current Section',
     'Revert_All' => 'Revert All',
+    'view_student_data' => 'View Student Data',
+    'Actions' => 'Actions',
+    'add_fee_invoice' => 'Add Fee Invoice',
+    'delete_student' => 'Delete Student',
     
 
 ];

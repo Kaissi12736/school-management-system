@@ -13,6 +13,7 @@ use App\Http\Controllers\Teachers\TeacherController;
 use App\Http\Controllers\Students\GraduatedController;
 use App\Http\Controllers\Students\PromotionController;
 use App\Http\Controllers\Classrooms\ClassroomController;
+use App\Http\Controllers\Students\FeesInvoicesController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['middleware' => ['guest']], function () {
@@ -62,6 +63,7 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/Get_Sections/{id}', 'Get_Sections');
     Route::resource('Graduated', GraduatedController::class);
     Route::resource('Promotion', PromotionController::class);
+    Route::resource('Fees_Invoices', FeesInvoicesController::class);
     Route::delete('/promotion/delete-std-one', [PromotionController::class, 'Delete_std_one'])->name('Promotion.Delete_std_one');
     Route::resource('Fees', FeesController::class);
     Route::post('upload', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');

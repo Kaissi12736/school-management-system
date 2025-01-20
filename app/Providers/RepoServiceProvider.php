@@ -6,11 +6,13 @@ use App\Repository\FeesRepository;
 use App\Repository\StudentRepository;
 use App\Repository\TeacherRepository;
 use Illuminate\Support\ServiceProvider;
+use App\Repository\FeeInvoicesRepository;
 use App\Repository\FeesRepositoryInterface;
 use App\Repository\StudentGraduatedRepository;
 use App\Repository\StudentPromotionRepository;
 use App\Repository\StudentRepositoryInterface;
 use App\Repository\TeacherRepositoryInterface;
+use App\Repository\FeeInvoicesRepositoryInterface;
 use App\Repository\StudentGraduatedRepositoryInterface;
 use App\Repository\StudentPromotionRepositoryInterface;
 
@@ -27,7 +29,7 @@ class RepoServiceProvider extends ServiceProvider
         $this->app->bind(StudentPromotionRepositoryInterface::class, StudentPromotionRepository::class);
         $this->app->bind(StudentGraduatedRepositoryInterface::class, StudentGraduatedRepository::class);
         $this->app->bind(FeesRepositoryInterface::class, FeesRepository::class, );
-
+        $this->app->bind(FeeInvoicesRepositoryInterface::class, FeeInvoicesRepository::class, );
     }
 
     /**

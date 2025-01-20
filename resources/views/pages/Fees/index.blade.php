@@ -2,12 +2,18 @@
 @section('css')
     @toastr_css
 @section('title')
-{{ trans('Fees_trans.Add_New_Fee') }}@stop
+
+{{ __('Fees_trans.tuition_fees') }}
+
+@stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-{{ trans('Fees_trans.Add_New_Fee') }}@stop
+
+{{ __('Fees_trans.tuition_fees') }}
+
+@stop
 <!-- breadcrumb -->
 @endsection
 @section('content')
@@ -20,7 +26,8 @@
                         <div class="card card-statistics h-100">
                             <div class="card-body">
                                 <a href="{{route('Fees.create')}}" class="btn btn-success btn-sm" role="button"
-                                   aria-pressed="true">{{ trans('Fees_trans.Add_New_Fee') }}</a><br><br>
+                                   aria-pressed="true">{{ __('Fees_trans.Add_New_Fee') }}
+                                   </a><br><br>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -28,13 +35,13 @@
                                         <thead>
                                         <tr class="alert-success">
                                             <th>#</th>
-                                            <th>{{ trans('Fees_trans.Name') }}</th>
-                                            <th>{{ trans('Fees_trans.Amount') }}</th>
-                                            <th>{{ trans('Fees_trans.Grade') }}</th>
-                                            <th>{{ trans('Fees_trans.Class') }}</th>
-                                            <th>{{ trans('Fees_trans.Year') }}</th>
-                                            <th>{{ trans('Fees_trans.Notes') }}</th>
-                                            <th>{{ trans('Fees_trans.Actions') }}</th>
+                                            <th>{{ __('Fees_trans.Name') }}</th>
+                                            <th>{{ __('Fees_trans.Amount') }}</th>
+                                            <th> {{ __('Fees_trans.Grade') }}</th>
+                                            <th> {{ __('Fees_trans.Class') }}</th>
+                                            <th>{{ __('Fees_trans.Year') }} </th>
+                                            <th>{{ __('Fees_trans.Notes') }} </th>
+                                            <th>{{ __('Fees_trans.Actions') }} </th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -68,5 +75,5 @@
     <!-- row closed -->
 @endsection
 @section('js')
-
+ 
 @endsection
