@@ -34,6 +34,22 @@ return [
     'created_at' => 'تاريخ الاضافة',
     'Download' => 'تحميل',
     'delete' => 'حذف',
+    'Academic_year' => 'السنة الدراسية',
+    'Old_school_stage' => 'المرحلة الدراسية القديمة',
+    'New_academic_stage' => 'المرحلة الدراسية الجديدة',
+    'New_academic_stage' => 'المرحلة الدراسية الجديدة',
+    'confirmation' => 'تاكيد',
+
+    'Previous_Grade' => 'المرحلة الدراسية السابقة',
+    'Previous_Year' => 'السنة الدراسية السابقة',
+    'Previous_Class' => 'الصف الدراسي السابق',
+    'Previous_Section' => 'القسم الدراسي السابق',
+    'Current_Grade' => 'المرحلة الدراسية الحالية',
+    'Current_Year' => 'السنة الدراسية الحالية',
+    'Current_Class' => 'الصف الدراسي الحالي',
+    'Current_Section' => 'القسم الدراسي الحالي',
+    'Revert_All' => 'إعادة كل',
+    
 
 
 

@@ -49,7 +49,15 @@ return [
     'validation_message' => 'Please fill in all the fields!',
     'add_Grade' => 'Add Grade',
     'add_student' => 'Add Student',
-    'list_students' => 'List Students'
+    'list_students' => 'List Students',
+
+    'Graduate_students'=>'Graduate students',
+  'add_Graduate'=>'add Graduate',
+  'list_Graduate'=>'list Graduate',
+  'Student_information' => 'Student information',
+  'Students_Promotions'=>'Students Promotions',
+  'add_Promotion'=>'Add Promotion',
+  'list_Promotions'=>'List Promotions',
    
     
 ];

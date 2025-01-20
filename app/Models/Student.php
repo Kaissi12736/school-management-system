@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
+
+    use SoftDeletes;
+
     use HasTranslations;
     public $translatable = ['name'];
     protected $guarded =[];
@@ -62,4 +66,5 @@ class Student extends Model
     {
         return $this->belongsTo(My_Parent::class, 'parent_id');
     }
+
 }

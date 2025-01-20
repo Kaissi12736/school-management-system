@@ -55,4 +55,9 @@ class PromotionController extends Controller
     {
         return $this->Promotion->destroy($request);
     }
+
+    public function  Delete_std_one(Request $request) 
+    {
+        return $this->Promotion->Delete_std_one($request);
+    }
 }

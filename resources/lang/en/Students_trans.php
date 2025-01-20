@@ -34,7 +34,20 @@ return [
     'created_at' => 'created_at',
     'Download' => 'Download',
     'delete' => 'Delete',
+    'Academic_year' => 'Academic year',
+    'Old_school_stage' => 'Old school stage',
+    'New_academic_stage' => 'New academic stage',
+    'confirmation' => 'confirmation',
 
+    'Previous_Grade' => 'Previous Grade',
+    'Previous_Year' => 'Previous Year',
+    'Previous_Class' => 'Previous Class',
+    'Previous_Section' => 'Previous Section',
+    'Current_Grade' => 'Current Grade',
+    'Current_Year' => 'Current Year',
+    'Current_Class' => 'Current Class',
+    'Current_Section' => 'Current Section',
+    'Revert_All' => 'Revert All',
     
 
 ];

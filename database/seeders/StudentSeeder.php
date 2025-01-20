@@ -12,6 +12,9 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
+                // الحصول على السنة الحالية
+                $currentYear = date("Y");
+
         // بيانات الطلاب التجريبية
         $students = [
             [
@@ -26,7 +29,7 @@ class StudentSeeder extends Seeder
                 'Classroom_id' => 1, // مثال: الفصل الأول
                 'section_id' => 1, // مثال: القسم الأول
                 'parent_id' => 1, // مثال: الأب رقم 1
-                'academic_year' => '2024',
+                'academic_year' => $currentYear, // السنة الدراسية الافتراضية
             ],
             [
                 'name' => json_encode(['en' => 'Jane Smith', 'ar' => 'جين سميث']),
@@ -40,7 +43,7 @@ class StudentSeeder extends Seeder
                 'Classroom_id' => 2, // مثال: الفصل الثاني
                 'section_id' => 2, // مثال: القسم الثاني
                 'parent_id' => 2, // مثال: الأب رقم 2
-                'academic_year' => '2024',
+                'academic_year' => $currentYear, // السنة الدراسية الافتراضية
             ],
         ];
 

@@ -47,12 +47,12 @@
 </script>
 
 <!-- Bootstrap Bundle -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
+{{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-pzjw8f+ua7Kw1TIqj8mOnyZ2mbz4YiCWj4f9Xj3jtMp4ylr60CmDXm9uBoqKbFVm" crossorigin="anonymous">
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script> --}}
 
 <!-- Grades JS -->
 <script src="{{ asset('assets/js/grades.js') }}"></script>

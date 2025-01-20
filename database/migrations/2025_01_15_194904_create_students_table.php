@@ -25,6 +25,7 @@ return new class extends Migration
             $table->bigInteger('section_id')->unsigned();
             $table->bigInteger('parent_id')->unsigned();
             $table->string('academic_year');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

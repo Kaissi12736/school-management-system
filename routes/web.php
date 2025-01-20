@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Grades\GradeController;
 
+use App\Http\Controllers\Students\FeesController;
 use App\Http\Controllers\Sections\SectionController;
 use App\Http\Controllers\Students\StudentController;
 use App\Http\Controllers\Teachers\TeacherController;
@@ -59,17 +60,20 @@ Route::controller(StudentController::class)->group(function () {
     Route::resource('Students', StudentController::class);
     Route::get('/Get_classrooms/{id}', 'Get_classrooms');
     Route::get('/Get_Sections/{id}', 'Get_Sections');
-
-
+    Route::resource('Graduated', GraduatedController::class);
+    Route::resource('Promotion', PromotionController::class);
+    Route::delete('/promotion/delete-std-one', [PromotionController::class, 'Delete_std_one'])->name('Promotion.Delete_std_one');
+    Route::resource('Fees', FeesController::class);
     Route::post('upload', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
     Route::get('Download_attachment/{studentsname}/{filename}', [StudentController::class,'Download_attachment'])->name('Download_attachment');
     Route::post('delete',  [StudentController::class, 'Delete_attachment'])->name('Delete_attachment');
 });
 
-    //==============================Promotion Students ============================
-    Route::resource('Promotion', PromotionController::class);
+   
+   
 
-    Route::resource('Graduated', GraduatedController::class);
+   
+
 });
 
 

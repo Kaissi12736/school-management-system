@@ -17,6 +17,7 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
 
     public function index()
     {
+        
         $Grades = Grade::all();
         return view('pages.Students.promotion.index',compact('Grades'));
     }
@@ -31,18 +32,18 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
         DB::beginTransaction();
     
         try {
-            // تعريفات التحقق
-            $validated = $request->validate([
-                'Grade_id' => 'required|integer|different:Grade_id_new|exists:students',
-                'Grade_id_new' => 'required|integer',
-                'academic_year_new' => 'required|string|different:academic_year',
-                'academic_year' => 'required|integer|exists:students',
-                'section_id_new' => 'required|string|different:section_id',
-                'Classroom_id' => 'required|integer|exists:students',
-                // 'Classroom_id_new' => 'required|integer|exists:students',
-                'section_id' => 'required|string|exists:students',
-            ]);
-    
+          // تعريفات التحقق
+          $validated = $request->validate([
+            // 'Grade_id' => 'required|integer|different:Grade_id_new|exists:students',
+            'Grade_id_new' => 'required|integer',
+            // 'academic_year_new' => 'required|string|different:academic_year',
+            'academic_year' => 'required|string|exists:students',
+            // 'section_id_new' => 'required|string|different:section_id',
+            'Classroom_id' => 'required|integer|exists:students',
+            // 'Classroom_id_new' => 'required|integer|exists:students',
+            'section_id' => 'required|integer|exists:students',
+        ]);
+
             // جلب الطلاب من المرحلة المحددة
             $students = Student::where('Grade_id', $request->Grade_id)
                 ->where('Classroom_id', $request->Classroom_id)
@@ -142,11 +143,29 @@ class StudentPromotionRepository implements StudentPromotionRepositoryInterface
                 $this->flashDeleteMessage();
                 return redirect()->back();
                 }
+       
 
         }
 
         catch (\Exception $e) {
             DB::rollback();
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+        
+    }
+
+    
+    public function Delete_std_one($request)
+    {
+        try {
+            $promotion = Promotion::findOrFail($request->id);
+            $student = $promotion->student;
+    
+            // حذف الطالب أو تنفيذ الإجراء المطلوب
+            $promotion->delete();
+            $this->flashDeleteMessage();
+            return redirect()->back();
+        } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }

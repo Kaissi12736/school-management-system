@@ -35,23 +35,49 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
             student::whereIn('id', $ids)->Delete();
         }
 
-        toastr()->success(trans('messages.success'));
+        $this->flashDeleteMessage();
         return redirect()->route('Graduated.index');
     }
 
     public function ReturnData($request)
     {
         student::onlyTrashed()->where('id', $request->id)->first()->restore();
-        toastr()->success(trans('messages.success'));
+        $this->flashSuccessMessage();
         return redirect()->back();
     }
 
     public function destroy($request)
     {
         student::onlyTrashed()->where('id', $request->id)->first()->forceDelete();
-        toastr()->error(trans('messages.Delete'));
+        $this->flashDeleteMessage();
+
         return redirect()->back();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    public function flashSuccessMessage()
+    {
+        flash()
+            ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+            ->success(trans('messages.success'));
+    }
+    public function flashDeleteMessage()
+    {
+        flash()
+            ->option('position', app()->getLocale() === 'en' ? 'top-right' : 'top-left')
+            ->error(trans('messages.Delete'));
+    }
 
 }

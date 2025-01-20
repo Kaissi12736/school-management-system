@@ -14,4 +14,6 @@ interface StudentPromotionRepositoryInterface
 
     public function destroy($request);
 
+     public function  Delete_std_one($request);
+
 }

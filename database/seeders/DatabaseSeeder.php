@@ -2,6 +2,7 @@
 
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\FeesSeeder;
 use Database\Seeders\GradeSeeder;
 use Database\Seeders\ParentSeeder;
 use Database\Seeders\SectionSeeder;
@@ -39,6 +40,7 @@ class DatabaseSeeder extends Seeder
         $this->call(StudentSeeder::class); // الطلاب
     
         $this->call(CreateAdminUserSeeder::class); // المستخدم الإداري
+         $this->call(FeesSeeder::class); // قم باستدعاء الـ Seeder الخاص بـ Fees
     }
     
 }

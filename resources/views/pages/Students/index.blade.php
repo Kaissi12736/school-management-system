@@ -36,6 +36,8 @@
                                             <th>{{trans('Students_trans.Grade')}}</th>
                                             <th>{{trans('Students_trans.classrooms')}}</th>
                                             <th>{{trans('Students_trans.section')}}</th>
+                                            <th>{{trans('Students_trans.Academic_year')}}</th>
+
                                             <th>{{trans('Students_trans.Processes')}}</th>
                                         </tr>
                                         </thead>
@@ -49,6 +51,8 @@
                                             <td>{{$student->grade->Name}}</td>
                                             <td>{{$student->classroom->Name_Class}}</td>
                                             <td>{{$student->section->Name_Section}}</td>
+                                            <td>{{$student->academic_year}}</td>
+
                                                 <td>
                                                     <a href="{{route('Students.edit',$student->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete_Student{{ $student->id }}" title="{{ trans('Grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>

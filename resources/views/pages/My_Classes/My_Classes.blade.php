@@ -33,12 +33,10 @@
             @endif
 
             <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus"></i>
                 {{ trans('My_Classes_trans.add_class') }}
             </button>
 
                 <button type="button" class="button x-small" id="btn_delete_all">
-                    <i class="fa fa-trash"></i>
                     {{ trans('My_Classes_trans.delete_checkbox') }}
                 </button>
 

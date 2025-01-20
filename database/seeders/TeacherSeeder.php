@@ -17,7 +17,7 @@ class TeacherSeeder extends Seeder
             [
                 'Email' => 'teacher1@example.com',
                 'Password' => bcrypt('password1'),
-                'Name' => 'Teacher One',
+                'Name' => json_encode(['en' => 'Teacher One', 'ar' => 'المعلم الاول']),
                 'Specialization_id' => 1, // مثال: تخصص الرياضيات
                 'Gender_id' => 1, // مثال: ذكر
                 'Joining_Date' => '2020-09-01',
@@ -26,7 +26,7 @@ class TeacherSeeder extends Seeder
             [
                 'Email' => 'teacher2@example.com',
                 'Password' => bcrypt('password2'),
-                'Name' => 'Teacher Two',
+                'Name' => json_encode(['en' => 'Teacher Two', 'ar' => 'المعلم الثاني']),
                 'Specialization_id' => 2, // مثال: تخصص الفيزياء
                 'Gender_id' => 2, // مثال: أنثى
                 'Joining_Date' => '2018-08-15',
